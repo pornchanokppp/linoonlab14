@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cmath>
+#include <cmath> 
 using namespace std;
 
 void stat(const double[],int,double[]);
@@ -17,3 +17,70 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+
+double X(const double s[],int n){
+    double sum = 0 ;
+    for(int i=0 ; i<n ; i++){
+        sum += s[i] ;
+    }
+    return sum/n ;
+}
+
+double SD(const double s[],int n){
+    double sum = 0 ;
+    double sd ;
+    for(int i=0 ; i<n ; i++){
+        sum += pow(s[i],2) ;
+    }
+    sd = sqrt((sum/n)-(pow(X(s,n),2))) ;
+    return sd ;
+}
+
+double GM(const double s[],int n){
+    double z = 1 ;
+    double gm ;
+    for(int i=0 ; i<n ; i++){
+        z *= s[i] ;
+    }
+    gm = pow(z,(double)1/n) ;
+    return gm ;
+}
+
+double HM(const double s[],int n){
+    double sum = 0 ;
+    double hm ;
+    for(int i=0 ; i<n ; i++){
+        sum += (double)1/s[i] ;
+    }
+    hm = (double)n/sum ;
+    return hm ;
+}
+
+double Max(const double s[],int n){
+    double max = s[0] ;
+    for(int i=0 ; i<n ; i++){
+        if(s[i]>max) max = s[i] ;
+    }
+    return max ;
+}
+
+double Min(const double s[],int n){
+    double min = s[0] ;
+    for(int i=0 ; i<n ; i++){
+        if(s[i]<min) min = s[i] ;
+    }
+    return min ;
+}
+
+void stat(const double A[],int N,double B[]){
+    B[0] = X(A,N);
+    B[1] = SD(A,N);
+    B[2] = GM(A,N);
+    B[3] = HM(A,N);
+    B[4] = Max(A,N);
+    B[5] = Min(A,N);
+}
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Te
